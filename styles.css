@@ -24,7 +24,8 @@ body {
   opacity: 1;
 }
 
-nav, main {
+nav,
+main {
   margin: 0 auto;
 }
 

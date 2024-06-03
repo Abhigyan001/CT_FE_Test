@@ -59,7 +59,10 @@ function displayData(data) {
     data[3].diagnosis_history[0].blood_pressure.diastolic.value;
   getElement("diastolic_level").innerHTML =
     data[3].diagnosis_history[0].blood_pressure.diastolic.levels;
+  
 
+  // Diagnosis list
+  
   let diag_list = "";
   for (let i = 0; i < data[3].diagnostic_list.length; i++) {
     diag_list += `
@@ -71,7 +74,8 @@ function displayData(data) {
     `;
   }
   getElement("diagnosis_history").innerHTML = diag_list;
-
+  
+  // lab data
   let lab_list = "";
   for (let i = 0; i < data[3].lab_results.length; i++) {
     lab_list += `
@@ -83,6 +87,8 @@ function displayData(data) {
   }
   getElement("lab-results").innerHTML = lab_list;
 
+
+  //patient list
   let patient_list = "";
   for (let i = 0; i < data.length; i++) {
     patient_list += `

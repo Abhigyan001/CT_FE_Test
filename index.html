@@ -1,0 +1,188 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.JPG" sizes="16x16" />
+    <title>HealthCare Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar flex">
+      <img src="img/TestLogo.svg" alt="logo" class="logo" />
+      <ul class="menu flex">
+        <li>
+          <img src="img/home.svg" alt="home" />
+          <p>Overview</p>
+        </li>
+        <li>
+          <img src="img/group.svg" alt="home" />
+          <p>Patients</p>
+        </li>
+        <li>
+          <img src="img/calendar_today.svg" alt="calendar" />
+          <p>Schedule</p>
+        </li>
+        <li>
+          <img src="img/chat_bubble.svg" alt="chat" />
+          <p>Message</p>
+        </li>
+        <li>
+          <img src="img/credit_card.svg" alt="credit-card" />
+          <p>Transactions</p>
+        </li>
+      </ul>
+      <div class="account flex">
+        <img src="img/senior-woman.png" alt="profile-pic" />
+        <div class="account-name">
+          <p class="name">Dr. Jose Simmons</p>
+          <p class="designation">General Practitioner</p>
+        </div>
+        <img src="img/settings.svg" alt="settings" />
+        <img src="img/more_vert.svg" alt="vert-drop" />
+      </div>
+    </nav>
+
+    <main>
+      <!-- Left sidebar -->
+      <aside class="left-aside">
+        <div>
+          <h2>Patients</h2>
+          <img src="img/search.svg" alt="search" />
+        </div>
+        <ul id="patient-list"></ul>
+      </aside>
+
+      <!-- Middle section -->
+      <section class="middle-section flex">
+        <div class="diagnosis">
+          <h2>Diagnosis History</h2>
+          <div class="bp-info flex">
+            <div class="chart-container">
+              <div class="chart-title flex">
+                <h3>Blood Pressure</h3>
+                <div>
+                  <span>Last 6 months</span>
+                  <img src="img/expand_more.svg" alt="expand more" />
+                </div>
+              </div>
+              <canvas id="bpChart"></canvas>
+            </div>
+            <div class="bp-details">
+              <div class="systolic">
+                <div class="bp-measure">
+                  <p class="pink"></p>
+                  <h4>Systolic</h4>
+                </div>
+                <p id="systolic_value"></p>
+                <img src="img/ArrowUp.svg" alt="arrow-up" />
+                <span id="systolic_level"></span>
+              </div>
+              <div class="diastolic">
+                <div class="bp-measure">
+                  <p class="violet"></p>
+                  <h4>Diastolic</h4>
+                </div>
+                <p id="diastolic_value"></p>
+                <img src="img/ArrowDown.svg" alt="arrow-down" />
+                <span id="diastolic_level"></span>
+              </div>
+            </div>
+          </div>
+          <div class="chart-info flex">
+            <div class="resp-info">
+              <img src="img/respiratory rate.svg" alt="respiratory rate" />
+              <h3>Respiratory Rate</h3>
+              <p><span id="respiratory_rate"></span> bpm</p>
+              <span id="respiratory_rate_level"></span>
+            </div>
+            <div class="temp-info">
+              <img src="img/temperature.svg" alt="temperature" />
+              <h3>Temperature</h3>
+              <p><span id="temp_value"></span>°F</p>
+              <span id="temp_level"></span>
+            </div>
+            <div class="heart-info">
+              <img src="img/HeartBPM.svg" alt="Heart Rate" />
+              <h3>Heart Rate</h3>
+              <p><span id="heart_rate"></span> bpm</p>
+              <img
+                src="img/ArrowDown.svg"
+                alt="arrow down"
+                class="arrow-down"
+              />
+              <span id="heart_rate_level"></span>
+            </div>
+          </div>
+        </div>
+        <div class="diagnostic-list">
+          <h2>Diagnostic List</h2>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 35%">Problem/Diagnosis</th>
+                <th style="width: 50%">Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="diagnosis_history"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Right sidebar -->
+      <aside class="right-aside flex">
+        <div class="profile-details">
+          <img src="img/jessica@2x.png" alt="profile-pic" class="profile-pic" />
+          <h2 id="name"></h2>
+          <ul>
+            <li>
+              <img src="img/BirthIcon.svg" alt="BirthIcon" />
+              <div>
+                <p>Date Of Birth</p>
+                <p id="date_of_birth"></p>
+              </div>
+            </li>
+            <li>
+              <img src="img/FemaleIcon.svg" alt="FemaleIcon" />
+              <div>
+                <p>Gender</p>
+                <p id="gender"></p>
+              </div>
+            </li>
+            <li>
+              <img src="img/PhoneIcon.svg" alt="PhoneIcon" />
+              <div>
+                <p>Contact Info.</p>
+                <p id="phone_number"></p>
+              </div>
+            </li>
+            <li>
+              <img src="img/PhoneIcon.svg" alt="PhoneIcon" />
+              <div>
+                <p>Emergency Contacts</p>
+                <p id="emergency_contact"></p>
+              </div>
+            </li>
+            <li>
+              <img src="img/InsuranceIcon.svg" alt="InsuranceIcon" />
+              <div>
+                <p>Insurance Provider</p>
+                <p id="insurance_type"></p>
+              </div>
+            </li>
+          </ul>
+          <button class="info-button">Show All Information</button>
+        </div>
+        <div class="lab-results">
+          <h2>Lab Results</h2>
+          <ul id="lab-results"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+  </body>
+</html>
